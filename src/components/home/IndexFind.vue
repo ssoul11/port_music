@@ -182,7 +182,7 @@
       :show-indicators="false"
     >
       <van-swipe-item v-for="getmv in states.getNewmvs" :key="getmv">
-        <div class="recommend-wipeitem">
+        <div class="recommend-wipeitem" @click="clickMv(getmv)">
           <span class="play-icon"
             ><van-icon name="play" />{{ getmv.playCount }}</span
           >
@@ -200,6 +200,7 @@ import { onBeforeMount, reactive } from '@vue/runtime-core'
 import axios from '@/utils/axios'
 import store from '@/store'
 import { Toast } from 'vant'
+import router from '@/router'
 
 // states对象响应式数据
 const states = reactive({
@@ -232,7 +233,7 @@ async function getNewmvs() {
   console.log(res)
   states.getNewmvs = res.result
 }
-
+// 点击轮播图播放音乐
 function clickBanner(ban) {
   // console.log(store.state.playList)
   const tempArr = store.state.playList.slice(0)
@@ -240,19 +241,26 @@ function clickBanner(ban) {
   store.commit('changeplayList', tempArr)
   // store.commit('changeshowPlayer')
 }
-// function clickNewsongs(item) {
-//   console.log('55555')
-//   console.log(item)
-//   const obj = {}
-//   obj.id = item.id
-//   obj.name = item.name
-//   obj.ar = item.song.artists
-//   obj.al = item
-//   const tempArr = store.state.playList.slice(0)
-//   tempArr.splice(store.state.playIndex, 0, obj)
-//   store.commit('changeplayList', tempArr)
-// }
 
+// 点击mv进入mv组件
+function clickMv(item) {
+  // console.log('点击了')
+  router.push(`/mv/${item.id}`)
+}
+// 点击新音乐加入playList进行播放
+function clickNewsongs(item) {
+  console.log('55555')
+  console.log(item)
+  const obj = {}
+  obj.id = item.id
+  obj.name = item.name
+  obj.ar = item.song.artists
+  obj.al = item
+  const tempArr = store.state.playList.slice(0)
+  tempArr.splice(store.state.playIndex, 0, obj)
+  store.commit('changeplayList', tempArr)
+}
+// vant组件库弹出提示框
 function NoUse() {
   Toast({
     message:

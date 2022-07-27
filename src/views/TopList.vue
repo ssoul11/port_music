@@ -1,4 +1,4 @@
-// 歌单广场组件
+// 排行榜组件
 <template>
   <list-top class="sticky_top"></list-top>
   <list-mid></list-mid>

@@ -5,9 +5,9 @@
 </template>
 
 <script>
-import GroundMid from '@/components/home/songground/GroundMid.vue'
+// import GroundMid from '@/components/home/songground/GroundMid.vue'
 export default {
-  components: { GroundMid }
+  // components: { GroundMid }
 }
 </script>
 <style scoped>

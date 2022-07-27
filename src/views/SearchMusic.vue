@@ -1,5 +1,4 @@
 // 搜索界面以及历史记录组件
-
 <template>
   <div class="top">
     <div class="top-left">
@@ -40,6 +39,7 @@
       <van-icon name="delete-o" @click="removeAll" />
     </div>
   </div>
+  <!-- 复用了渲染歌曲的组件 -->
   <SongList
     class="setZindex"
     v-else
@@ -117,11 +117,13 @@ export default {
       console.log('失焦了哦')
       // states.showHistory = true
     }
+    // 点击按钮进行搜索
     function hisButton(name) {
       states.searchKey = name
       searchMc()
       console.log('点击了button')
     }
+    // 点击列表中某一首歌时，加入playList进行播放
     function onePlay(song) {
       console.log(store.state.playList)
       const tempArr = store.state.playList.slice(0)

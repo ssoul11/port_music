@@ -11,7 +11,6 @@ const routes = [
     beforeEnter: (to, from, next) => {
       // ...
       let user = localGet('token')
-      console.log(user);
       if (!store.hasToken) {
         if (user !== null && Object.keys(user).length !== 0) {
           store.commit('changeuserProfile', user)
@@ -27,9 +26,7 @@ const routes = [
           })
         }
       }
-      next(() => {
-
-      })
+      next()
     }
   },
   { // 主页发现
@@ -89,6 +86,12 @@ const routes = [
     path: '/singer/:id',
     name: 'Singer',
     component: () => import('@/views/SingerIndex')
+
+  },
+  { // mv播放组件路由
+    path: '/mv/:id',
+    name: 'MV',
+    component: () => import('@/views/ItemMv')
 
   },
 ]

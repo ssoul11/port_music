@@ -6,7 +6,7 @@
     text="由于网易云接口的原因，某些音乐的获取会出现问题导致无法正常播放，属正常现象，请另选择其他曲目进行播放"
     mode="closeable"
   />
-  <router-view />
+  <router-view :key="$route.fullPath" />
   <!-- <ItemPlay></ItemPlay> -->
   <ItemPlay />
 </template>

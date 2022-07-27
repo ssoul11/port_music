@@ -107,7 +107,7 @@ export default createStore({
     async getplayLyric({ state, commit }) {
       // console.log("getplayLyric调用了");
       const res = await axios.get(`/lyric?id=${state.playList[state.playIndex].id}`)
-      // console.log(res.lrc.lyric);
+      console.log(res);
 
       // 解析获取到的歌词
       const arr = res.lrc.lyric.trim().split('\n').map((value) => {

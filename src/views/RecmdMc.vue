@@ -26,6 +26,7 @@ export default {
     const states = reactive({
       recmdList: []
     })
+    // 获取每日推荐的歌曲
     async function getRecList() {
       const res = await axios.get('/recommend/songs')
       console.log(res.data)

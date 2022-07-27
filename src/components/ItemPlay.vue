@@ -6,7 +6,12 @@
       <img :src="playList[playIndex].al.picUrl" />
       <div>
         <p>{{ playList[playIndex].name }}</p>
-        <span>横滑切换上下首哦</span>
+        <!-- <span>横滑切换上下首哦</span> -->
+        <span
+          ><span v-for="(singer, i) in playList[playIndex].ar" :key="singer"
+            ><span v-if="i > 0">/</span>{{ singer.name }}</span
+          >
+        </span>
       </div>
     </div>
     <!-- 右边为播放暂停播放列表等按钮 -->

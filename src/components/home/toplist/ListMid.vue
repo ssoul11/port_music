@@ -39,6 +39,7 @@ const states = reactive({
 //   states.list1 = states.list2.splice(0, 4)
 //   console.log(states.list1, states.list2)
 // }
+// 异步获取排行榜歌单
 async function getToplistDetail() {
   const res = await axios.get('/toplist/detail')
   states.list2 = res.list
