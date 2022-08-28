@@ -1,6 +1,11 @@
-# port_music
+# 仿网易云音乐移动web端
 
-## Project setup
+### 技术栈
+
+vue3+vue-router+vuex+vant+axios
+
+### Project setup
+
 ```
 npm install
 ```
