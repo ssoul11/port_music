@@ -201,6 +201,7 @@ import axios from '@/utils/axios'
 import store from '@/store'
 import { Toast } from 'vant'
 import router from '@/router'
+import { getBanners, getPersonlizs } from '@/utils/api'
 
 // states对象响应式数据
 const states = reactive({
@@ -211,20 +212,20 @@ const states = reactive({
 })
 // 获取轮播图的数据
 async function getBanner() {
-  const res = await axios.get('/banner?type=2')
+  const res = await getBanners()
   states.banners = res.banners
   // console.log(res)
 }
 // 获取推荐歌单
 async function getPersonliz() {
-  const res = await axios.get('/personalized?limit=6')
+  const res = await getPersonlizs()
   states.getPersonlizs = res.result
   // console.log(res)
 }
 // 获取推荐新音乐
 async function getNewsongs() {
   const res = await axios.get('/personalized/newsong?limit=9')
-  console.log(res)
+  // console.log(res)
   states.getNewsongs = res.result
 }
 // 获取推荐mv
@@ -236,9 +237,19 @@ async function getNewmvs() {
 // 点击轮播图播放音乐
 function clickBanner(ban) {
   // console.log(store.state.playList)
-  const tempArr = store.state.playList.slice(0)
-  tempArr.splice(store.state.playIndex, 0, ban.song)
-  store.commit('changeplayList', tempArr)
+  if (ban.song) {
+    const tempArr = store.state.playList.slice(0)
+    tempArr.splice(store.state.playIndex, 0, ban.song)
+    store.commit('changeplayList', tempArr)
+    // console.log('歌曲')
+  } else if (ban.url) {
+    window.open(ban.url)
+    // console.log('url')
+  } else if (ban.targetType === 10) {
+    // console.log('专辑')
+    router.push(`/album/${ban.targetId}?type=1`)
+  }
+
   // store.commit('changeshowPlayer')
 }
 

@@ -29,7 +29,7 @@ export default {
     // 获取每日推荐的歌曲
     async function getRecList() {
       const res = await axios.get('/recommend/songs')
-      console.log(res.data)
+      // console.log(res.data)
       states.recmdList = res.data.dailySongs
     }
     // 在点击歌单中歌曲时触发

@@ -255,6 +255,7 @@ export default {
       }
       this.deleteOneMusic(index)
     },
+    // 点击歌手进入歌手主页
     clickSinger() {
       console.log('点击歌手')
       if (this.song.ar.length > 1) {
@@ -266,6 +267,7 @@ export default {
       }
       // this.$router.push(`/singer/${}`)
     },
+    // 当包含多个歌手时，点击的某一位歌手
     clickMulti(singer) {
       this.$router.push(`/singer/${singer.id}`)
       this.changeshowPlayer()

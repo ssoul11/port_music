@@ -80,6 +80,8 @@ import store from '@/store'
 // import SongList from '@/components/slist/SongList.vue'
 
 const route = useRoute()
+// 根据传入的type值判断是歌单还是专辑,如果有则为专辑
+const listType = route.query.type
 // 通过route动态路由匹配获取传入的id参数
 const listId = route.params.id
 const plyLst = reactive({
@@ -93,15 +95,32 @@ const plyLst = reactive({
 })
 // 通过动态路由传入的歌单id参数，获取歌单的详情
 const getList = async function () {
-  // console.log('/playlist/detail?id=' + route.params.id)
-  const res = await axios.get('/playlist/detail?id=' + listId)
-  plyLst.listName = res.playlist.name //歌单名
-  plyLst.commentCount = res.playlist.commentCount //评论数
-  plyLst.shareCount = res.playlist.shareCount //分享量
-  plyLst.playCount = res.playlist.playCount //播放量
-  plyLst.coverImgUrl = res.playlist.coverImgUrl //歌单图片
-  plyLst.subscribedCount = res.playlist.subscribedCount //收藏数
-  // console.log(res)
+  let res
+  // console.log(route.query.type)
+  if (listType == 1) {
+    // console.log(listId)
+    res = await axios.get('/album?id=' + listId)
+    const albumItem = await axios.get('/album/detail/dynamic?id=' + listId)
+    console.log(res, albumItem)
+    plyLst.listName = res.album.name //歌单名
+    plyLst.commentCount = albumItem.commentCount //评论数
+    plyLst.shareCount = albumItem.shareCount //分享量
+    // plyLst.playCount = albumItem.playCount //播放量
+    plyLst.coverImgUrl = res.album.blurPicUrl //歌单图片
+    plyLst.subscribedCount = albumItem.subCount //收藏数
+    plyLst.songs = res.songs
+    // console.log(res)
+  } else {
+    console.log(222222222)
+    res = await axios.get('/playlist/detail?id=' + listId)
+    plyLst.listName = res.playlist.name //歌单名
+    plyLst.commentCount = res.playlist.commentCount //评论数
+    plyLst.shareCount = res.playlist.shareCount //分享量
+    plyLst.playCount = res.playlist.playCount //播放量
+    plyLst.coverImgUrl = res.playlist.coverImgUrl //歌单图片
+    plyLst.subscribedCount = res.playlist.subscribedCount //收藏数
+    getSong()
+  }
 }
 // 通过歌单id获取歌单中的全部歌曲
 const getSong = async function () {
@@ -115,7 +134,6 @@ const getSong = async function () {
 // 组件挂载之前进行数据请求，数据包括，详细歌单的数据信息、歌单中的全部音乐
 onBeforeMount(() => {
   getList()
-  getSong()
 })
 // 通过子组件emit获得需要播放的歌曲在歌单的位置index
 // 在点击歌单中歌曲时触发

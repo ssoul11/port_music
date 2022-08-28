@@ -33,7 +33,12 @@
             finished-text="没有更多了"
             @load="onLoad"
           >
-            <div v-for="item in states.albums" :key="item" class="album_item">
+            <div
+              v-for="item in states.albums"
+              :key="item"
+              class="album_item"
+              @click="clickAlbum(item.id)"
+            >
               <div class="albumpic_item">
                 <img class="album_pic" :src="item.blurPicUrl" alt="" /><img
                   class="album_botm"
@@ -60,6 +65,7 @@ const { default: axios } = require('@/utils/axios')
 const { onMounted, reactive } = require('@vue/runtime-core')
 const { useRoute } = require('vue-router')
 const route = useRoute()
+import router from '@/router'
 import store from '@/store'
 import formatDate from '@/utils/date'
 
@@ -110,6 +116,10 @@ const getClickIndex = (value) => {
   store.commit('changeplayList', states.songs)
   store.commit('changeplayIndex', value)
 }
+const clickAlbum = (id) => {
+  router.push(`/album/${id}?type=1`)
+}
+
 onMounted(() => {
   getSingerDec()
   getSingerMc()

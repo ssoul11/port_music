@@ -93,7 +93,13 @@ const routes = [
     name: 'MV',
     component: () => import('@/views/ItemMv')
 
-  },
+  }, {
+    // 专辑组件路由
+    path: '/album/:id',
+    name: 'Album',
+    component: () => import('@/views/ItemAlbum')
+
+  }
 ]
 
 const router = createRouter({
