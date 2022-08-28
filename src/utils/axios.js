@@ -3,7 +3,8 @@ import { Toast } from 'vant'
 // import router from '@/router/index'
 // 这边由于后端没有区分测试和正式，姑且都写成一个接口。
 // axios.defaults.baseURL = 'https://coder4music-api.vercel.app'
-axios.defaults.baseURL = 'https://autumnfish.cn/'
+// axios.defaults.baseURL = 'https://autumnfish.cn'
+axios.defaults.baseURL = '/api'
 // 携带 cookie，对目前的项目没有什么作用，因为我们是 token 鉴权
 axios.defaults.withCredentials = true
 // axios.defaults.timeout = 10000
@@ -27,13 +28,13 @@ axios.interceptors.response.use(res => {
     //     // }
     //     return Promise.reject(res.data)
     // }
-    console.log(res);
+    // console.log(res);
     return res.data
     // return res
 }, (err) => {
     Toast({
         message:
-            `<div style="height: 4rem;width: 15rem;display: flex;font-size:0.8rem;color: white;background-color: rgba(80,80,80);flex-direction: column;align-items: center;justify-content:space-around"><span class="iconfont icon-gantanhao" style="font-size:1rem"></span><span>${err.response.data}</span></div>`,
+            `<div style="height: 4rem;width: 15rem;display: flex;font-size:0.8rem;color: white;background-color: rgba(80,80,80);flex-direction: column;align-items: center;justify-content:space-around"><span class="iconfont icon-gantanhao" style="font-size:1rem"></span><span>${err.response.data.msg}</span></div>`,
         iconSize: '10rem',
         type: 'html',
         duration: 2000

@@ -9,5 +9,18 @@ module.exports = defineConfig({
         resolvers: [VantResolver()]
       })
     ]
+  },
+  devServer: {
+    host: '127.0.0.1',
+    port: 1111,
+    proxy: {
+      '/api': {
+        target: 'https://autumnfish.cn',	//实际请求地址
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    },
   }
 })
