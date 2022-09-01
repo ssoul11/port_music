@@ -3,7 +3,7 @@
     <div class="nav-left">
       <span
         class="iconfont icon-direction-left"
-        @click="this.$router.back(-1)"
+        @click="$router.back(-1)"
       ></span>
     </div>
 

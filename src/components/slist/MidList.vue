@@ -162,7 +162,8 @@ const getClickIndex = (value) => {
 }
 .top-img img {
   transform: scale(1.8);
-  filter: blur(1.5rem) brightness(50%);
+  height: 30rem;
+  filter: blur(1.5rem) brightness(70%);
 }
 .mid {
   margin-top: 1.875rem;

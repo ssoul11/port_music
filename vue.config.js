@@ -11,8 +11,8 @@ module.exports = defineConfig({
     ]
   },
   devServer: {
-    host: '127.0.0.1',
-    port: 1111,
+    // host: '127.0.1.222',
+    // port: 2222,
     proxy: {
       '/api': {
         target: 'https://autumnfish.cn',	//实际请求地址

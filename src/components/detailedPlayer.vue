@@ -334,7 +334,8 @@ export default {
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
-  height: 2.5rem;
+  /* height: 2.5rem; */
+  height: 10vh;
   color: white;
 }
 .top-left {
@@ -377,7 +378,7 @@ export default {
   align-items: center;
   margin-top: 1rem;
   width: 100%;
-  height: 65%;
+  height: 60vh;
 }
 
 .disc-needle .needle {
@@ -400,7 +401,7 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100%;
-  width: 100%;
+  width: 80%;
 }
 .pic_rotate {
   animation: img_rotate 20s linear infinite;
@@ -409,7 +410,7 @@ export default {
 .disc-needle .picUrl {
   width: 50%;
   position: absolute;
-  top: 7.2rem;
+  /* top: 7.2rem; */
   border-radius: 50%;
   z-index: -2;
   animation: img_rotate 20s linear infinite;
@@ -422,9 +423,9 @@ export default {
 }
 
 .disc-needle .disc {
-  width: 80%;
-  position: absolute;
-  top: 4rem;
+  width: 100%;
+  /* position: absolute;
+  top: 4rem; */
   z-index: -1;
 }
 .disc-word {
@@ -460,7 +461,7 @@ export default {
 .mid-icon {
   height: 10%;
   padding: 0 1rem;
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -477,6 +478,7 @@ export default {
   align-items: center;
   justify-content: center;
   width: 100%;
+  height: 10vh;
   bottom: 11%;
 }
 .song-progress input {
@@ -502,6 +504,7 @@ export default {
 
 .bottom-icon {
   width: 100%;
+  height: 8vh;
   position: fixed;
   bottom: 2%;
 }

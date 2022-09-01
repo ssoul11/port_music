@@ -231,7 +231,7 @@ async function getNewsongs() {
 // 获取推荐mv
 async function getNewmvs() {
   const res = await axios.get('/personalized/mv')
-  console.log(res)
+  // console.log(res)
   states.getNewmvs = res.result
 }
 // 点击轮播图播放音乐
@@ -260,8 +260,8 @@ function clickMv(item) {
 }
 // 点击新音乐加入playList进行播放
 function clickNewsongs(item) {
-  console.log('55555')
-  console.log(item)
+  // console.log('55555')
+  // console.log(item)
   const obj = {}
   obj.id = item.id
   obj.name = item.name
