@@ -70,9 +70,9 @@ async function getMvUrl() {
 }
 // 获取mv的singer的详细
 async function getSingerDetail(id) {
-  const res = await axios.get(`/artist/detail?id=${id}`)
-  console.log('singer:', res)
-  states.singerDetail = res.data.artist
+  // const res = await axios.get(`/artist/detail?id=${id}`)
+  console.log('singer:', id)
+  // states.singerDetail = res.data.artist
 }
 // 获取相似mv的方法
 async function getSimiMv() {

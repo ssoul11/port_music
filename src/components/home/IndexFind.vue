@@ -96,7 +96,12 @@
     ><van-icon on name="arrow" size="0.9375rem" color="#f3d19e" />
   </div>
   <div class="newMc">
-    <van-swipe class="my-swipe" :loop="false" indicator-color="black">
+    <van-swipe
+      class="my-swipe"
+      :loop="false"
+      indicator-color="black"
+      lazy-render
+    >
       <van-swipe-item class="new_item">
         <div
           class="new_item_div"
