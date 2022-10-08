@@ -17,7 +17,8 @@ const routes = [
           store.commit('changehasToken', true)
         } else {
           axios.get('/login/status').then((res) => {
-            if (res.data.profile != null) {
+            console.log(res);
+            if ((res.data.profile != null) && (res.data.account.id !== 7912018901)) {
               localSet('token', res.data.profile)
               store.commit('changeuserProfile', res.data.profile)
               store.commit('changehasToken', true)

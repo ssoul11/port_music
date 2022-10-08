@@ -64,11 +64,11 @@ export default {
     // console.log(this.hasToken, store.state.hasToken)
   },
   watch: {
-    hasToken(newV) {
-      if (newV === true) {
-        location.reload()
-      }
-    }
+    // hasToken(newV) {
+    //   if (newV === true) {
+    //     location.reload()
+    //   }
+    // }
   }
 }
 </script>
